@@ -4,7 +4,7 @@
     <h3>Title: <%= portfolio_item.title %></h3>
     <p>Subtitle: <%= portfolio_item.subtitle %></p>
     <p>Body: <%= portfolio_item.subtitle %></p>
-    <%= image_tag portfolio_item.main_image %>
-    <%= image_tag portfolio_item.thumb_image %>
+    <%= image_tag portfolio_item.main_image if !portfolio_item.main_image.nil? %>
+    <%= image_tag portfolio_item.thumb_image if !portfolio_item.thumb_image.nil? %>
     <hr>
 <% end %>
