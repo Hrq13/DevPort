@@ -1,11 +1,22 @@
 <h1>Portfolio Items</h1>
 
+<% if !notice.nil? %>
+    <h3><%= notice %></h3>
+<% end %>
+
 <% @portfolio_items.each do |portfolio_item| %>
     <h3>Title: <%= portfolio_item.title %></h3>
     <p>Subtitle: <%= portfolio_item.subtitle %></p>
     <p>Body: <%= portfolio_item.subtitle %></p>
     <%= image_tag portfolio_item.main_image if !portfolio_item.main_image.nil? %>
     <%= image_tag portfolio_item.thumb_image if !portfolio_item.thumb_image.nil? %>
-    <%= link_to "Edit item", edit_portfolio_path(portfolio_item) %>
+    <ul>
+        <li>
+            <%= link_to "Edit item", edit_portfolio_path(portfolio_item) %>
+        </li>
+        <li>
+            <%= link_to "View item", portfolio_path(portfolio_item) %>
+        </li>
+    </ul>
     <hr>
 <% end %>
