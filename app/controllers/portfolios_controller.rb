@@ -1,5 +1,5 @@
 class PortfoliosController < ApplicationController
-  before_action :set_portfolio_item, only: [ :edit, :update, :show, :destroy ]
+  before_action :set_portfolio_item, only: %i[ show edit update destroy ], except: %i[ new ]
 
   def index
     @portfolio_items = Portfolio.all
@@ -12,7 +12,6 @@ class PortfoliosController < ApplicationController
   def create
     @params = params.require(:portfolio).permit(:title, :subtitle, :body)
     @portfolio_item = Portfolio.new(@params)
-
     respond_to do |format|
         if @portfolio_item.save
             format.html { redirect_to portfolios_path, notice: "Portfolio item #{@portfolio_item.title} has been created successfully." }
@@ -52,7 +51,7 @@ class PortfoliosController < ApplicationController
   end
 
   private
-    def set_portfolio_item
-      @portfolio_item = Portfolio.find(params[:id])
-    end
+  def set_portfolio_item
+    @portfolio_item = Portfolio.find(params[:id])
+  end
 end

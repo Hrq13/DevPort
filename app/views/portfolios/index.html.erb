@@ -4,6 +4,8 @@
     <h3><%= notice %></h3>
 <% end %>
 
+<%= link_to "Create new portfolio item", new_portfolio_path %>
+
 <% @portfolio_items.each do |portfolio_item| %>
     <h3>Title: <%= portfolio_item.title %></h3>
     <p>Subtitle: <%= portfolio_item.subtitle %></p>
