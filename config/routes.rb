@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  resources :portfolios
-  get 'pages/home'
+  resources :portfolios, only: [:index, :create]
+  get 'portfolio/new', to: 'portfolios#new', as: 'new_portfolio'
+  get 'portfolio/:id/edit', to: 'portfolios#edit', as: 'edit_portfolio'
+  get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio'
+  patch 'portfolio/:id', to: 'portfolios#update'
+  delete 'portfolio/:id', to: 'portfolios#destroy'
 
-  get 'pages/about'
+  get 'about-henrique', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
 
-  get 'pages/contact'
+  resources :blogs do
+    member do
+      get :toggle_status
+    end
+  end
 
-  resources :blogs
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'pages#home'
 end

@@ -1,0 +1,23 @@
+<h1>Portfolio Items</h1>
+
+<% if !notice.nil? %>
+    <p><%= notice %></p>
+<% end %>
+
+<h3>Title: <%= @portfolio_item.title %></h3>
+<p>Subtitle: <%= @portfolio_item.subtitle %></p>
+<p>Body: <%= @portfolio_item.subtitle %></p>
+<%= image_tag @portfolio_item.main_image if !@portfolio_item.main_image.nil? %>
+<%= image_tag @portfolio_item.thumb_image if !@portfolio_item.thumb_image.nil? %>
+<ul>
+    <li>
+        <%= link_to "Edit item", edit_portfolio_path(@portfolio_item) %>
+    </li>
+    <li>
+        <%= link_to "Delete item", portfolio_path(@portfolio_item), method: :delete, data: { confirm: "Are you sure you want to delete #{@portfolio_item.title} permanently?" } %>
+    </li>
+    <li>
+        <%= link_to "See all", portfolios_path %>
+    </li>
+</ul>
+<hr>
