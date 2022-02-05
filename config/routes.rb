@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :portfolios, only: [:index, :create]
+  get 'portfolios/angular', to: 'portfolios#angular', as: 'angular_portfolio_items'
+  get 'portfolios/ruby_on_rails', to: 'portfolios#ruby_on_rails', as: 'ruby_on_rails_portfolio_items'
   get 'portfolio/new', to: 'portfolios#new', as: 'new_portfolio'
   get 'portfolio/:id/edit', to: 'portfolios#edit', as: 'edit_portfolio'
   get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio'
