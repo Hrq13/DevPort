@@ -5,10 +5,29 @@
 <% end %>
 
 <h3>Title: <%= @portfolio_item.title %></h3>
+
 <p>Subtitle: <%= @portfolio_item.subtitle %></p>
+
 <p>Body: <%= @portfolio_item.subtitle %></p>
+
 <%= image_tag @portfolio_item.main_image if !@portfolio_item.main_image.nil? %>
+
 <%= image_tag @portfolio_item.thumb_image if !@portfolio_item.thumb_image.nil? %>
+
+<h3>Technologies used: </h3>
+
+<ul>
+    <% @portfolio_item.technologies.each do |t| %>
+        <li>
+            <%= t.name %>
+        </li>
+    <% end %>
+</ul>
+
+<hr>
+
+<h4>Navigation buttons </h4>
+
 <ul>
     <li>
         <%= link_to "Edit item", edit_portfolio_path(@portfolio_item) %>
