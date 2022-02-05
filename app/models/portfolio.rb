@@ -1,5 +1,8 @@
 class Portfolio < ApplicationRecord
     has_many :technologies
+    accepts_nested_attributes_for :technologies,
+                                  reject_if: lambda { |attrs| attrs['name'].blank? }
+
     extend FriendlyId
     friendly_id :title, use: :slugged
     validates_presence_of :title, :subtitle, :body, :main_image, :thumb_image
